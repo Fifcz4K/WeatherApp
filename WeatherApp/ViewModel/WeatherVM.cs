@@ -43,7 +43,27 @@ namespace WeatherApp.ViewModel
             }
         }
 
-
+        public WeatherVM()
+        {
+            if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+            {
+                SelectedCity = new City
+                {
+                    LocalizedName = "Kraków"
+                };
+                CurrentConditions = new CurrentConditions
+                {
+                    WeatherText = "Rainy",
+                    Temperature = new Temperature
+                    {
+                        Metric = new Units
+                        {
+                            Value = 30
+                        }
+                    }
+                };
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
