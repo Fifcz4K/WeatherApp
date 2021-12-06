@@ -23,6 +23,7 @@
                      FontSize="16"/>
             <Button Content="Search"
                     FontSize="16"
+                    Command="{Binding SearchCommand}"
                     Margin="0 10"
                     Background="AliceBlue"/>
             <ListView>

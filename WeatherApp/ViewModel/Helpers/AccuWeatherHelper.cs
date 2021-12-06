@@ -12,12 +12,12 @@ namespace WeatherApp.ViewModel.Helpers
 {
     public class AccuWeatherHelper
     {
-        public const string BASE_URL = "http://dataservice.accuweather.com";
+        public const string BASE_URL = "http://dataservice.accuweather.com/";
         public const string AUTOCOMPLETE_ENPOINT = "locations/v1/cities/autocomplete?apikey={0}&q={1}";
         public const string CURRENTCONDITION_ENDPOINT = "currentconditions/v1/{0}?apikey={1}";
         static string API_KEY;
 
-        public AccuWeatherHelper()
+        static AccuWeatherHelper()
         {
             API_KEY = File.ReadAllText("apikey.txt");
         }
