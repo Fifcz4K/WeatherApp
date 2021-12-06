@@ -19,7 +19,7 @@ namespace WeatherApp.Model
         public Units Imperial { get; set; }
     }
 
-    public class CurrentCondtions
+    public class CurrentConditions
     {
         public DateTime LocalObservationDateTime { get; set; }
         public int EpochTime { get; set; }
