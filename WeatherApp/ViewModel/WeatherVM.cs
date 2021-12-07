@@ -19,7 +19,7 @@ namespace WeatherApp.ViewModel
             set
             {
                 query = value;
-                OnPropertyChanged("Query");
+                OnPropertyChanged(nameof(Query));
             }
         }
 
@@ -30,7 +30,7 @@ namespace WeatherApp.ViewModel
             set
             {
                 currentConditions = value;
-                OnPropertyChanged("CurrentConditions");
+                OnPropertyChanged(nameof(CurrentConditions));
             }
         }
 
@@ -41,7 +41,7 @@ namespace WeatherApp.ViewModel
             set
             {
                 selectedCity = value;
-                OnPropertyChanged("SelectedCity");
+                OnPropertyChanged(nameof(SelectedCity));
             }
         }
 
