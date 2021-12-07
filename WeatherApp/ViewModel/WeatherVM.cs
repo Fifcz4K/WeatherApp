@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace WeatherApp.ViewModel
             set
             {
                 query = value;
-                OnPropertyChanged(nameof(Query));
+                OnPropertyChanged("Query");
             }
         }
+
+        public ObservableCollection<City> Cities { get; set; }
 
         private CurrentConditions currentConditions;
         public CurrentConditions CurrentConditions
@@ -30,7 +33,7 @@ namespace WeatherApp.ViewModel
             set
             {
                 currentConditions = value;
-                OnPropertyChanged(nameof(CurrentConditions));
+                OnPropertyChanged("CurrentConditions");
             }
         }
 
@@ -41,7 +44,8 @@ namespace WeatherApp.ViewModel
             set
             {
                 selectedCity = value;
-                OnPropertyChanged(nameof(SelectedCity));
+                OnPropertyChanged("SelectedCity");
+                GetCurrentCondition();
             }
         }
 
@@ -62,18 +66,32 @@ namespace WeatherApp.ViewModel
                     {
                         Metric = new Units
                         {
-                            Value = 30
+                            Value = "30.0"
                         }
                     }
                 };
             }
 
             SearchCommand = new SearchCommand(this);
+            Cities = new ObservableCollection<City>();
+        }
+
+        private async void GetCurrentCondition()
+        {
+            Query = string.Empty;
+            Cities.Clear();
+            CurrentConditions = await AccuWeatherHelper.GetCurrentConditions(SelectedCity.Key);
         }
 
         public async void MakeQuery()
         {
             List<City> cities = await AccuWeatherHelper.GetCities(Query);
+
+            Cities.Clear();
+            foreach (var city in cities)
+            {
+                Cities.Add(city);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

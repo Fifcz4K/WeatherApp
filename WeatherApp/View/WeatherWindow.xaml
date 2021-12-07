@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WeatherApp.View"
         xmlns:vm="clr-namespace:WeatherApp.ViewModel"
         mc:Ignorable="d"
-        Title="WeatherWindow" Height="600" Width="400">
+        Title="WeatherWindow" Height="500" Width="400">
     <Window.Resources>
         <vm:WeatherVM x:Key="vm"/>
     </Window.Resources>
@@ -27,11 +27,12 @@
                     CommandParameter="{Binding Query}"
                     Margin="0 10"
                     Background="AliceBlue"/>
-            <ListView>
+            <ListView ItemsSource="{Binding Cities}"
+                      SelectedValue="{Binding SelectedCity}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <TextBlock/>
+                            <TextBlock Text="{Binding LocalizedName}"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
