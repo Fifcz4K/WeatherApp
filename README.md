@@ -1,2 +1,2 @@
 # WeatherApp
-#Learining MVVM by creating the WeatherApp using AccuWeather APIs
+Learining MVVM by creating the WeatherApp using AccuWeather APIs
